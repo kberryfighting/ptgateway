@@ -1,0 +1,74 @@
+server:
+  port: 8088
+
+---
+
+spring:
+  profiles: default
+  cloud:
+    gateway:
+      routes:
+        - id: Ptorder
+          uri: http://localhost:8081
+          predicates:
+            - Path=/ptorders/** 
+        - id: Ptmanager
+          uri: http://localhost:8082
+          predicates:
+            - Path=/ptmanagers/** 
+        - id: Pttrainer
+          uri: http://localhost:8083
+          predicates:
+            - Path=/pttrainers/** 
+        - id: Ptstatus
+          uri: http://localhost:8084
+          predicates:
+            - Path= /ptstatuses/**
+      globalcors:
+        corsConfigurations:
+          '[/**]':
+            allowedOrigins:
+              - "*"
+            allowedMethods:
+              - "*"
+            allowedHeaders:
+              - "*"
+            allowCredentials: true
+
+
+---
+
+spring:
+  profiles: docker
+  cloud:
+    gateway:
+      routes:
+        - id: Ptorder
+          uri: http://Ptorder:8080
+          predicates:
+            - Path=/ptorders/** 
+        - id: Ptmanager
+          uri: http://Ptmanager:8080
+          predicates:
+            - Path=/ptmanagers/** 
+        - id: Pttrainer
+          uri: http://Pttrainer:8080
+          predicates:
+            - Path=/pttrainers/** 
+        - id: Ptstatus
+          uri: http://Ptstatus:8080
+          predicates:
+            - Path= /ptstatuses/**
+      globalcors:
+        corsConfigurations:
+          '[/**]':
+            allowedOrigins:
+              - "*"
+            allowedMethods:
+              - "*"
+            allowedHeaders:
+              - "*"
+            allowCredentials: true
+
+server:
+  port: 8080
