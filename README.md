@@ -195,7 +195,7 @@
 
 
 
-## 헥사고날 아키텍처 다이어그램 도출
+## 헥사고날 아키텍처 다이어그램 도
     
 ![image](https://user-images.githubusercontent.com/487999/79684772-eba9ab00-826e-11ea-9405-17e2bf39ec76.png)
 
